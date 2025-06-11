@@ -21,7 +21,7 @@ class SexAdjustmentTest {
 
         Adjustment resultAdjustment = sexAdjustment.apply(premium, Sex.FEMALE);
 
-        assertThat(resultAdjustment.amount()).isEqualTo(expectedAdjustment);
+        assertThat(resultAdjustment).isEqualTo(expectedAdjustment);
     }
 
     @DisplayName("GIVEN male and premium 100 WHEN apply discount THEN discount is 0")

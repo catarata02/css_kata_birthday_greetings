@@ -16,11 +16,11 @@ class GrossPremiumCalculatorTest {
 
     static Stream<org.junit.jupiter.params.provider.Arguments> providePersonsAndExpectedPremiums() {
         return Stream.of(
-                org.junit.jupiter.params.provider.Arguments.of(new Person(10, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(120.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(18, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(150)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(26, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(200.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(46, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(250.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(66, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(300.0))
+                org.junit.jupiter.params.provider.Arguments.of(new Person(10, Sex.FEMALE, Canton.AG, 55000.0, true, Collections.emptyList()), new GrossPremium(120.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(18, Sex.FEMALE, Canton.AG, 55000.0, true, Collections.emptyList()), new GrossPremium(150)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(26, Sex.FEMALE, Canton.AG, 55000.0, true, Collections.emptyList()), new GrossPremium(200.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(46, Sex.FEMALE, Canton.AG, 55000.0, true, Collections.emptyList()), new GrossPremium(250.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(66, Sex.FEMALE, Canton.AG, 55000.0, true, Collections.emptyList()), new GrossPremium(300.0))
         );
     }
 

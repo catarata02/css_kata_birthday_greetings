@@ -13,12 +13,18 @@ public class AdjustmentCalculator {
         Adjustment sexAdjustment = calculateSexDiscount(person, grossPremium);
         Adjustment cantonAdjustment = calculateCantonDiscount(person, grossPremium);
         Adjustment accidentExclusionAdjustment = calculateAccidentExclusionDiscount(person, grossPremium);
+        Adjustment incomeAdjustment = calculateIncomeAdjustment(person, grossPremium);
         List<Adjustment> additionalInsurancesAdjustments = calculateAdditionalInsurances(person, grossPremium);
 
         return Stream.concat(
-                Stream.of(sexAdjustment, cantonAdjustment, accidentExclusionAdjustment),
+                Stream.of(sexAdjustment, cantonAdjustment, accidentExclusionAdjustment, incomeAdjustment),
                 additionalInsurancesAdjustments.stream()
         ).toList();
+    }
+
+    private Adjustment calculateIncomeAdjustment(Person person, GrossPremium grossPremium) {
+        IncomeAdjustment incomeAdjustment = new IncomeAdjustment();
+        return incomeAdjustment.apply(grossPremium, person.income());
     }
 
     private List<Adjustment> calculateAdditionalInsurances(Person person, GrossPremium grossPremium) {
