@@ -1,5 +1,6 @@
 package ch.example.kata.praemienrechner;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 enum Tarif {
@@ -25,11 +26,18 @@ enum Tarif {
     RABATT_MITTLERES_EINKOMMEN(p -> p.getEinkommen() >= 30_000 && p.getEinkommen() <= 50_000, praemie -> praemie * 0.95),
     RABATT_FAMILIE(p -> p.hasZusatzattribute(Zusatzattribut.HAT_FAMILIE), praemie -> praemie - 20),
     RABATT_TREUEBONUS(p -> p.hasZusatzattribute(Zusatzattribut.IST_ZUVERLAESSIG), praemie -> praemie - 10),
+
+    ZUSCHLAG_RISIKO(p -> true, (person, praemie) -> praemie * person.getRisikoKategorie().getModifikator()),
     ;
     final Function<Person, Boolean> predicate;
-    final Function<Double, Double> modifier;
+    final BiFunction<Person, Double, Double> modifier;
 
     Tarif(Function<Person, Boolean> predicate, Function<Double, Double> modifier) {
+        this.predicate = predicate;
+        this.modifier = (person, praemie) -> modifier.apply(praemie);
+    }
+
+    Tarif(Function<Person, Boolean> predicate, BiFunction<Person, Double, Double> modifier) {
         this.predicate = predicate;
         this.modifier = modifier;
     }
@@ -39,7 +47,7 @@ enum Tarif {
         double praemie = 0;
         for (Tarif tarif : Tarif.values()) {
             if (tarif.predicate.apply(person)) {
-                praemie = tarif.modifier.apply(praemie);
+                praemie = tarif.modifier.apply(person, praemie);
                 System.out.println(praemie + " CHF " + tarif);
             }
         }

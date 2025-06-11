@@ -8,11 +8,12 @@ public class Person {
     private final Gender gender;
     private final int einkommen;
     private final Kanton kanton;
+    private final RisikoKategorie risikoKategorie;
     private final List<Zusatzattribut> zusatzAttribute;
 
 
 
-    public Person(int age, Gender gender, int einkommen, Kanton kanton, Zusatzattribut... zusatzattribute) {
+    public Person(int age, Gender gender, int einkommen, Kanton kanton, RisikoKategorie risikoKategorie, Zusatzattribut... zusatzattribute) {
         if (age < 0) {
             throw new IllegalArgumentException("Alter muss mindestens 0 sein");
         }
@@ -20,6 +21,7 @@ public class Person {
         this.gender = gender;
         this.einkommen = einkommen;
         this.kanton = kanton;
+        this.risikoKategorie = risikoKategorie;
         this.zusatzAttribute = Arrays.asList(zusatzattribute);
     }
 
@@ -40,6 +42,10 @@ public class Person {
         return kanton;
     }
 
+    public RisikoKategorie getRisikoKategorie() {
+        return risikoKategorie;
+    }
+
     public boolean hasZusatzattribute(Zusatzattribut zusatzattribut) {
         return this.zusatzAttribute.contains(zusatzattribut);
     }
@@ -51,6 +57,7 @@ public class Person {
                 ", gender=" + gender +
                 ", einkommen=" + einkommen +
                 ", kanton=" + kanton +
+                ", risikoKategorie=" + risikoKategorie +
                 ", zusatzAttribute=" + zusatzAttribute +
                 '}';
     }

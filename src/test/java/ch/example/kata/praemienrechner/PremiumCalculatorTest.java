@@ -17,21 +17,21 @@ class PremiumCalculatorTest {
     PremiumCalculator testee = new PremiumCalculator();
 
     Map<Person, Double> testMap = new HashMap<>() {{
-        put(new Person(17, Gender.MANN, EINKOMMEN_NIEDRIG, Kanton.ZH, UNFALLVERSICHERUNG_AUSSCHLUSS), 107.1);
-        put(new Person(19, Gender.MANN, EINKOMMEN_HOCH, Kanton.GE), 175.0);
-        put(new Person(26, Gender.MANN, EINKOMMEN_MITTEL, Kanton.AI), 180.5);
-        put(new Person(65, Gender.MANN, EINKOMMEN_HOCH, Kanton.SONSTIGE), 255.0);
-        put(new Person(80, Gender.MANN, EINKOMMEN_HOCH, Kanton.SONSTIGE), 305.0);
-        put(new Person(26, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE), 195.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, UNFALLVERSICHERUNG_AUSSCHLUSS), 261.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, ZAHNVERSICHERUNG), 320.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, SEHHILFE), 305.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, KOMPLEMENTAERMEDIZIN), 330.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, KOMPLEMENTAERMEDIZIN, ZAHNVERSICHERUNG), 360.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, KOMPLEMENTAERMEDIZIN, ZAHNVERSICHERUNG, SEHHILFE), 375.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, ZAHNVERSICHERUNG, SEHHILFE), 335.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, HAT_FAMILIE), 270.0);
-        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, IST_ZUVERLAESSIG), 280.0);
+        put(new Person(17, Gender.MANN, EINKOMMEN_NIEDRIG, Kanton.ZH, RisikoKategorie.GERINGES_RISIKO, UNFALLVERSICHERUNG_AUSSCHLUSS), 107.1);
+        put(new Person(19, Gender.MANN, EINKOMMEN_HOCH, Kanton.GE, RisikoKategorie.GERINGES_RISIKO), 175.0);
+        put(new Person(26, Gender.MANN, EINKOMMEN_MITTEL, Kanton.AI, RisikoKategorie.GERINGES_RISIKO), 180.5);
+        put(new Person(65, Gender.MANN, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO), 255.0);
+        put(new Person(80, Gender.MANN, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO), 305.0);
+        put(new Person(26, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO), 195.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO, UNFALLVERSICHERUNG_AUSSCHLUSS), 261.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO, ZAHNVERSICHERUNG), 320.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO, SEHHILFE), 305.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO, KOMPLEMENTAERMEDIZIN), 330.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO, KOMPLEMENTAERMEDIZIN, ZAHNVERSICHERUNG), 360.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO, KOMPLEMENTAERMEDIZIN, ZAHNVERSICHERUNG, SEHHILFE), 375.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.GERINGES_RISIKO, ZAHNVERSICHERUNG, SEHHILFE), 335.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.MITTLERES_RISIKO, HAT_FAMILIE), 297.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, RisikoKategorie.HOHES_RISIKO, IST_ZUVERLAESSIG), 364.0);
     }};
 
     @Test
