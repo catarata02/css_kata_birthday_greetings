@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Collections;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -15,11 +16,11 @@ class GrossPremiumCalculatorTest {
 
     static Stream<org.junit.jupiter.params.provider.Arguments> providePersonsAndExpectedPremiums() {
         return Stream.of(
-                org.junit.jupiter.params.provider.Arguments.of(new Person(1, Sex.FEMALE, Canton.AG, true), new GrossPremium(120.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(18, Sex.FEMALE, Canton.AG, true), new GrossPremium(150)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(26, Sex.FEMALE, Canton.AG, true), new GrossPremium(200.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(46, Sex.FEMALE, Canton.AG, true), new GrossPremium(250.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(66, Sex.FEMALE, Canton.AG, true), new GrossPremium(300.0))
+                org.junit.jupiter.params.provider.Arguments.of(new Person(10, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(120.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(18, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(150)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(26, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(200.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(46, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(250.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(66, Sex.FEMALE, Canton.AG, true, Collections.emptyList()), new GrossPremium(300.0))
         );
     }
 

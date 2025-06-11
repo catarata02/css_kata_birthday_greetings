@@ -5,6 +5,10 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PremiumCalculatorTest {
@@ -14,7 +18,7 @@ class PremiumCalculatorTest {
     @DisplayName("GIVEN female of age 18 WHEN calculate premium THEN get premium of 147.5")
     @Test
     void test1() {
-        Person person = createPerson(18, Sex.FEMALE, Canton.AG, true);
+        Person person = createPerson(18, Sex.FEMALE, Canton.AG, true, Collections.emptyList());
         double expectedPremium = 147.5;
 
         Premium resultPremium = premiumCalculator.calculate(person);
@@ -25,7 +29,7 @@ class PremiumCalculatorTest {
     @DisplayName("GIVEN male of age 18 WHEN calculate premium THEN get premium of 155.0")
     @Test
     void test2() {
-        Person person = createPerson(18, Sex.MALE, Canton.AG, true);
+        Person person = createPerson(18, Sex.MALE, Canton.AG, true, Collections.emptyList());
         double expectedPremium = 155.0;
 
         Premium resultPremium = premiumCalculator.calculate(person);
@@ -36,7 +40,7 @@ class PremiumCalculatorTest {
     @DisplayName("GIVEN male of age 18 living in ZH WHEN calculate premium THEN get premium of 170.0")
     @Test
     void test3() {
-        Person person = createPerson(18, Sex.MALE, Canton.ZH, true);
+        Person person = createPerson(18, Sex.MALE, Canton.ZH, true, Collections.emptyList());
         double expectedPremium = 170.0;
 
         Premium resultPremium = premiumCalculator.calculate(person);
@@ -44,10 +48,10 @@ class PremiumCalculatorTest {
         assertThat(resultPremium.getNet()).isEqualTo(expectedPremium);
     }
 
-    @DisplayName("GIVEN male of age 45 living in LU with accident insurance WHEN calculate premium THEN get premium of 170.0")
+    @DisplayName("GIVEN male of age 45 living in LU with accident insurance WHEN calculate premium THEN get premium of 205.0")
     @Test
     void test4() {
-        Person person = createPerson(45, Sex.MALE, Canton.LU, true);
+        Person person = createPerson(45, Sex.MALE, Canton.LU, true, Collections.emptyList());
         double expectedPremium = 205.0;
 
         Premium resultPremium = premiumCalculator.calculate(person);
@@ -55,10 +59,10 @@ class PremiumCalculatorTest {
         assertThat(resultPremium.getNet()).isEqualTo(expectedPremium);
     }
 
-    @DisplayName("GIVEN male of age 45 living in LU without accident insurance WHEN calculate premium THEN get premium of 170.0")
+    @DisplayName("GIVEN male of age 45 living in LU without accident insurance WHEN calculate premium THEN get premium of 185.0")
     @Test
     void test5() {
-        Person person = createPerson(45, Sex.MALE, Canton.LU, false);
+        Person person = createPerson(45, Sex.MALE, Canton.LU, false, Collections.emptyList());
         double expectedPremium = 185.0;
 
         Premium resultPremium = premiumCalculator.calculate(person);
@@ -66,8 +70,28 @@ class PremiumCalculatorTest {
         assertThat(resultPremium.getNet()).isEqualTo(expectedPremium);
     }
 
+    @DisplayName(
+            "GIVEN male of age 45 living in LU with accident insurance and all additional insurance " +
+                    "WHEN calculate premium " +
+                    "THEN get premium of 290.0")
+    @Test
+    void test6() {
+        Person person = createPerson(
+                45,
+                Sex.MALE,
+                Canton.LU,
+                true,
+                Arrays.asList(AdditionalInsurance.KOMPLEMENTAER_MEDIZIN, AdditionalInsurance.SEH_HILFE, AdditionalInsurance.ZAHN_MEDIZIN)
+        );
+        double expectedPremium = 290;
+
+        Premium resultPremium = premiumCalculator.calculate(person);
+
+        assertThat(resultPremium.getNet()).isEqualTo(expectedPremium);
+    }
+
     @NotNull
-    private static Person createPerson(int age, Sex sex, Canton canton, boolean accidentInsured) {
-        return new Person(age, sex, canton, accidentInsured);
+    private static Person createPerson(int age, Sex sex, Canton canton, boolean accidentInsured, List<AdditionalInsurance> additionalInsuranceList) {
+        return new Person(age, sex, canton, accidentInsured, additionalInsuranceList);
     }
 }
