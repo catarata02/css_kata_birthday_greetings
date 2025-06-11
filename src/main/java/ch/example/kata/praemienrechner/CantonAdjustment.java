@@ -2,7 +2,7 @@ package ch.example.kata.praemienrechner;
 
 import java.util.Map;
 
-public class CantonDiscounter implements DiscountCalculator<Canton> {
+public class CantonAdjustment implements AdjustmentI<Canton> {
 
     Map<Canton, Double> adjustmentMap = Map.of(
             Canton.ZH, 20.0, 
@@ -10,14 +10,14 @@ public class CantonDiscounter implements DiscountCalculator<Canton> {
             Canton.AI, -10.0
     );
     
-    private static final Discount DEFAULT_CANTON_DISCOUNT = new Discount(5.0);
+    private static final Adjustment DEFAULT_CANTON_ADJUSTMENT = new Adjustment(5.0);
 
     @Override
-    public Discount apply(Premium premium, Canton criteria) {
+    public Adjustment apply(Premium premium, Canton criteria) {
         Double foundValue = adjustmentMap.get(criteria);
         if (foundValue != null) {
-            return new Discount(foundValue);
+            return new Adjustment(foundValue);
         }
-        return DEFAULT_CANTON_DISCOUNT;
+        return DEFAULT_CANTON_ADJUSTMENT;
     }
 }

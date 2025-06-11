@@ -1,4 +1,4 @@
 package ch.example.kata.praemienrechner;
 
-public record Discount(double amount) {
+public record Adjustment(double amount) {
 }
