@@ -24,6 +24,7 @@ enum Tarif {
     RABATT_NIEDRIGES_EINKOMMEN(p -> p.getEinkommen() < 30_000, praemie -> praemie * 0.85),
     RABATT_MITTLERES_EINKOMMEN(p -> p.getEinkommen() >= 30_000 && p.getEinkommen() <= 50_000, praemie -> praemie * 0.95),
     RABATT_FAMILIE(p -> p.hasZusatzattribute(Zusatzattribut.HAT_FAMILIE), praemie -> praemie - 20),
+    RABATT_TREUEBONUS(p -> p.hasZusatzattribute(Zusatzattribut.IST_ZUVERLAESSIG), praemie -> praemie - 10),
     ;
     final Function<Person, Boolean> predicate;
     final Function<Double, Double> modifier;

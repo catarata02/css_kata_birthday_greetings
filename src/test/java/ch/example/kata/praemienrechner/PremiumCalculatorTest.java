@@ -31,6 +31,7 @@ class PremiumCalculatorTest {
         put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, KOMPLEMENTAERMEDIZIN, ZAHNVERSICHERUNG, SEHHILFE), 375.0);
         put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, ZAHNVERSICHERUNG, SEHHILFE), 335.0);
         put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, HAT_FAMILIE), 270.0);
+        put(new Person(80, Gender.FRAU, EINKOMMEN_HOCH, Kanton.SONSTIGE, IST_ZUVERLAESSIG), 280.0);
     }};
 
     @Test
