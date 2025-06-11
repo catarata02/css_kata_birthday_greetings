@@ -5,6 +5,9 @@ public class Person {
 
 
     public Person(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("Alter muss mindestens 0 sein");
+        }
         this.age = age;
     }
 
