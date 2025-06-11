@@ -16,7 +16,10 @@ enum Tarif {
     KANTONALER_ZUSCHLAG_AI(p -> p.getKanton().equals(Kanton.AI), pramie -> pramie - 10),
     KANTONALER_ZUSCHLAG_SONSTIGE(p -> p.getKanton().equals(Kanton.SONSTIGE), pramie -> pramie + 5),
 
-    RABATT_UNFALLVERSICHERUNG_AUSSCHLUSS(p -> p.hasZusatzattribute(Zusatzattribut.UNFALLVERSICHERUNG_AUSSCHLUSS), praemie -> praemie * 0.90 )
+    RABATT_UNFALLVERSICHERUNG_AUSSCHLUSS(p -> p.hasZusatzattribute(Zusatzattribut.UNFALLVERSICHERUNG_AUSSCHLUSS), praemie -> praemie * 0.90 ),
+    ZUSCHLAG_ZAHNVERSICHERUNG(p -> p.hasZusatzattribute(Zusatzattribut.ZAHNVERSICHERUNG), praemie -> praemie + 30 ),
+    ZUSCHLAG_SEHHILFE(p -> p.hasZusatzattribute(Zusatzattribut.SEHHILFE), praemie -> praemie + 15 ),
+    ZUSCHLAG_KOMPLEMENTAERMEDIZIN(p -> p.hasZusatzattribute(Zusatzattribut.KOMPLEMENTAERMEDIZIN), praemie -> praemie + 40 ),
 
     ;
     final Function<Person, Boolean> predicate;

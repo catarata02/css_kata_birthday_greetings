@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-import static ch.example.kata.praemienrechner.Zusatzattribut.UNFALLVERSICHERUNG_AUSSCHLUSS;
+import static ch.example.kata.praemienrechner.Zusatzattribut.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -20,6 +20,12 @@ class PremiumCalculatorTest {
         put(new Person(80, Gender.MANN, Kanton.SONSTIGE), 305.0);
         put(new Person(26, Gender.FRAU, Kanton.SONSTIGE), 195.0);
         put(new Person(80, Gender.FRAU, Kanton.SONSTIGE, UNFALLVERSICHERUNG_AUSSCHLUSS), 261.0);
+        put(new Person(80, Gender.FRAU, Kanton.SONSTIGE, ZAHNVERSICHERUNG), 320.0);
+        put(new Person(80, Gender.FRAU, Kanton.SONSTIGE, SEHHILFE), 305.0);
+        put(new Person(80, Gender.FRAU, Kanton.SONSTIGE, KOMPLEMENTAERMEDIZIN), 330.0);
+        put(new Person(80, Gender.FRAU, Kanton.SONSTIGE, KOMPLEMENTAERMEDIZIN, ZAHNVERSICHERUNG), 360.0);
+        put(new Person(80, Gender.FRAU, Kanton.SONSTIGE, KOMPLEMENTAERMEDIZIN, ZAHNVERSICHERUNG, SEHHILFE), 375.0);
+        put(new Person(80, Gender.FRAU, Kanton.SONSTIGE, ZAHNVERSICHERUNG, SEHHILFE), 335.0);
     }};
 
     @Test
