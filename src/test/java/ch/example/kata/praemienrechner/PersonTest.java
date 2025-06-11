@@ -9,7 +9,7 @@ class PersonTest {
     @Test
     void whenAgeInvalid_then_Exception() {
         assertThrows(IllegalArgumentException.class, () -> {
-            Person testee = new Person(-12, Gender.MANN);
+            Person testee = new Person(-12, Gender.MANN, Kanton.ZH);
         });
     }
 
