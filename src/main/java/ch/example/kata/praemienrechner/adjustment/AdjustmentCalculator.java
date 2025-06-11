@@ -11,8 +11,14 @@ public class AdjustmentCalculator {
     public List<Adjustment> calculateDiscounts(Person person, GrossPremium grossPremium) {
         Adjustment sexAdjustment = calculateSexDiscount(person, grossPremium);
         Adjustment cantonAdjustment = calculateCantonDiscount(person, grossPremium);
+        Adjustment accidentExclusionAdjustment = calculateAccidentExclusionDiscount(person, grossPremium);
 
-        return Arrays.asList(sexAdjustment, cantonAdjustment);
+        return Arrays.asList(sexAdjustment, cantonAdjustment, accidentExclusionAdjustment);
+    }
+
+    private Adjustment calculateAccidentExclusionDiscount(Person person, GrossPremium grossPremium) {
+        AccidentInsuranceAdjustment accidentInsuranceAdjustment = new AccidentInsuranceAdjustment();
+        return accidentInsuranceAdjustment.apply(grossPremium, person.accidentInsured());
     }
 
     private static Adjustment calculateCantonDiscount(Person person, GrossPremium grossPremium) {
