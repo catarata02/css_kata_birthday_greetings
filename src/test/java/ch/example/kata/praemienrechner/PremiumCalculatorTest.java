@@ -24,7 +24,7 @@ class PremiumCalculatorTest {
     @Test
     void calculate_personMitAlter_then_praemie() {
         testMap.forEach((person, praemie) -> {
-            assertEquals(praemie, testee.calculate(person), "Praemie calculation failed for " + person.getAlterGruppe());
+            assertEquals(praemie, testee.calculate(person), "Praemie calculation failed for " + person.getAge() + " " +  person.getGender());
         });
     }
 }
