@@ -14,14 +14,19 @@ public class CantonAdjustment implements AdjustmentI<Canton> {
             Canton.AI, -10.0
     );
 
-    private static final Adjustment DEFAULT_CANTON_ADJUSTMENT = new Adjustment(5.0);
+    private static final Adjustment DEFAULT_CANTON_ADJUSTMENT = new Adjustment(5.0, "Default Canton");
 
     @Override
     public Adjustment apply(GrossPremium premium, Canton criteria) {
         Double foundValue = adjustmentMap.get(criteria);
         if (foundValue != null) {
-            return new Adjustment(foundValue);
+            return new Adjustment(foundValue, getType(criteria));
         }
         return DEFAULT_CANTON_ADJUSTMENT;
+    }
+
+    @Override
+    public String getType(Canton canton) {
+        return "Canton " + canton.getFullName();
     }
 }

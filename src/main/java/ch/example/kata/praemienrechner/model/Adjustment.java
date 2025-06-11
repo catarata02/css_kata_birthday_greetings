@@ -1,4 +1,4 @@
 package ch.example.kata.praemienrechner.model;
 
-public record Adjustment(double amount) {
+public record Adjustment(double amount, String type) {
 }

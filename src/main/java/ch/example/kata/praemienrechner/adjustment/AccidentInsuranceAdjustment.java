@@ -10,8 +10,13 @@ public class AccidentInsuranceAdjustment implements AdjustmentI<Boolean>{
     public Adjustment apply(GrossPremium premium, Boolean criteria) {
         if (Boolean.FALSE.equals(criteria)) {
             // accident not insured, gets discount
-            return new Adjustment(-premium.value() * ACCIDENT_EXCLUDED_DISCOUNT);
+            return new Adjustment(-premium.value() * ACCIDENT_EXCLUDED_DISCOUNT, getType(criteria));
         }
-        return new Adjustment(0.0);
+        return new Adjustment(0.0, getType(criteria));
+    }
+
+    @Override
+    public String getType(Boolean criteria) {
+        return "Accident " + (criteria ? "included" : "excluded");
     }
 }

@@ -17,18 +17,18 @@ class SexAdjustmentTest {
     @Test
     void test1() {
         GrossPremium premium = new GrossPremium(100.00);
-        Adjustment expectedAdjustment = new Adjustment(-5.00);
+        Adjustment expectedAdjustment = new Adjustment(-5.00, Sex.FEMALE.name());
 
         Adjustment resultAdjustment = sexAdjustment.apply(premium, Sex.FEMALE);
 
-        assertThat(resultAdjustment).isEqualTo(expectedAdjustment);
+        assertThat(resultAdjustment.amount()).isEqualTo(expectedAdjustment);
     }
 
     @DisplayName("GIVEN male and premium 100 WHEN apply discount THEN discount is 0")
     @Test
     void test2() {
         GrossPremium premium = new GrossPremium(100.00);
-        Adjustment expectedAdjustment = new Adjustment(0.00);
+        Adjustment expectedAdjustment = new Adjustment(0.00, Sex.MALE.name());
 
         Adjustment resultAdjustment = sexAdjustment.apply(premium, Sex.MALE);
 
