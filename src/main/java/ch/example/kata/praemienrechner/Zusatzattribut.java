@@ -5,4 +5,5 @@ enum Zusatzattribut {
     ZAHNVERSICHERUNG,
     SEHHILFE,
     KOMPLEMENTAERMEDIZIN,
+    HAT_FAMILIE
 }

@@ -23,6 +23,7 @@ enum Tarif {
 
     RABATT_NIEDRIGES_EINKOMMEN(p -> p.getEinkommen() < 30_000, praemie -> praemie * 0.85),
     RABATT_MITTLERES_EINKOMMEN(p -> p.getEinkommen() >= 30_000 && p.getEinkommen() <= 50_000, praemie -> praemie * 0.95),
+    RABATT_FAMILIE(p -> p.hasZusatzattribute(Zusatzattribut.HAT_FAMILIE), praemie -> praemie - 20),
     ;
     final Function<Person, Boolean> predicate;
     final Function<Double, Double> modifier;
@@ -33,10 +34,12 @@ enum Tarif {
     }
 
     public static double applyTarife(Person person) {
+        System.out.println("Applying Tarif for person: " + person);
         double praemie = 0;
         for (Tarif tarif : Tarif.values()) {
             if (tarif.predicate.apply(person)) {
                 praemie = tarif.modifier.apply(praemie);
+                System.out.println(praemie + " CHF " + tarif);
             }
         }
         return praemie;
