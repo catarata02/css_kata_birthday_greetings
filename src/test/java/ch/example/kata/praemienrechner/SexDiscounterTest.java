@@ -13,7 +13,7 @@ class SexDiscounterTest {
     @Test
     void test1() {
         Premium premium = new Premium(100.00);
-        Discount expectedDiscount = new Discount(5.00);
+        Discount expectedDiscount = new Discount(-5.00);
 
         Discount resultDiscount = sexDiscounter.apply(premium, Sex.FEMALE);
 

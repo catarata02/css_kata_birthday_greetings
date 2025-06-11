@@ -14,11 +14,11 @@ class GrossPremiumCalculatorTest {
 
     static Stream<org.junit.jupiter.params.provider.Arguments> providePersonsAndExpectedPremiums() {
         return Stream.of(
-                org.junit.jupiter.params.provider.Arguments.of(new Person(1, Sex.FEMALE), new Premium(120.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(18, Sex.FEMALE), new Premium(150)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(26, Sex.FEMALE), new Premium(200.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(46, Sex.FEMALE), new Premium(250.0)),
-                org.junit.jupiter.params.provider.Arguments.of(new Person(66, Sex.FEMALE), new Premium(300.0))
+                org.junit.jupiter.params.provider.Arguments.of(new Person(1, Sex.FEMALE, Canton.AG), new Premium(120.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(18, Sex.FEMALE, Canton.AG), new Premium(150)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(26, Sex.FEMALE, Canton.AG), new Premium(200.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(46, Sex.FEMALE, Canton.AG), new Premium(250.0)),
+                org.junit.jupiter.params.provider.Arguments.of(new Person(66, Sex.FEMALE, Canton.AG), new Premium(300.0))
         );
     }
 
