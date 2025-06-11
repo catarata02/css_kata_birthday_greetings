@@ -1,14 +1,18 @@
 package ch.example.kata.praemienrechner;
 
+import ch.example.kata.praemienrechner.model.GrossPremium;
+import ch.example.kata.praemienrechner.model.Person;
+import ch.example.kata.praemienrechner.model.PremiumAge;
+
 public class GrossPremiumCalculator {
-    public Premium calculate(Person person) {
+    public GrossPremium calculate(Person person) {
         PremiumAge premiumAge = person.getPremiumAge();
         return switch (premiumAge) {
-            case UNTER_18 -> new Premium(120.0);
-            case UNTER_26 -> new Premium(150.0);
-            case UNTER_46 -> new Premium(200.0);
-            case UNTER_66 -> new Premium(250.0);
-            case UNTER_200 -> new Premium(300.0);
+            case UNTER_18 -> new GrossPremium(120.0);
+            case UNTER_26 -> new GrossPremium(150.0);
+            case UNTER_46 -> new GrossPremium(200.0);
+            case UNTER_66 -> new GrossPremium(250.0);
+            case UNTER_200 -> new GrossPremium(300.0);
         };
     }
 }

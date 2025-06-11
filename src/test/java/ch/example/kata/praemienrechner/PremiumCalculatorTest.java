@@ -1,5 +1,6 @@
 package ch.example.kata.praemienrechner;
 
+import ch.example.kata.praemienrechner.model.*;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,33 +15,33 @@ class PremiumCalculatorTest {
     @Test
     void test1() {
         Person person = createPerson(18, Sex.FEMALE, Canton.AG);
-        Premium expectedPremium = new Premium(147.5);
+        double expectedPremium = 147.5;
 
         Premium resultPremium = premiumCalculator.calculate(person);
 
-        assertThat(resultPremium).isEqualTo(expectedPremium);
+        assertThat(resultPremium.getNet()).isEqualTo(expectedPremium);
     }
 
     @DisplayName("GIVEN male of age 18 WHEN calculate premium THEN get premium of 155.0")
     @Test
     void test2() {
         Person person = createPerson(18, Sex.MALE, Canton.AG);
-        Premium expectedPremium = new Premium(155.0);
+        double expectedPremium = 155.0;
 
         Premium resultPremium = premiumCalculator.calculate(person);
 
-        assertThat(resultPremium).isEqualTo(expectedPremium);
+        assertThat(resultPremium.getNet()).isEqualTo(expectedPremium);
     }
 
     @DisplayName("GIVEN male of age 18 living in ZH WHEN calculate premium THEN get premium of 170.0")
     @Test
     void test3() {
         Person person = createPerson(18, Sex.MALE, Canton.ZH);
-        Premium expectedPremium = new Premium(170.0);
+        double expectedPremium = 170.0;
 
         Premium resultPremium = premiumCalculator.calculate(person);
 
-        assertThat(resultPremium).isEqualTo(expectedPremium);
+        assertThat(resultPremium.getNet()).isEqualTo(expectedPremium);
     }
 
     @NotNull
